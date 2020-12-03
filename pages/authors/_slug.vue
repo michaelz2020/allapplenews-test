@@ -47,10 +47,9 @@
 </template>
 
 <script>
-export default {
-  async asyncData({ $sanity, params }) {
-    const queryAuthor = `{
-        "author": *[_type == "author" && slug.current == "${params.slug}"][0]{
+import { groq } from '@nuxtjs/sanity'
+
+const query = groq` *[_type == "author" && slug.current == $slug][0]{
             ...,
             "relatedArticles":*[_type in [ "articleNews" , "article"] && references(^._id)]{
                 "id":_id,
@@ -64,11 +63,17 @@ export default {
                 "coverImageAlt":coverImage.alt,
                 "slug": slug.current
               },
-            }
-          }`
+            }`
+export default {
+  async fetch() {
+    const result = await this.$sanity.fetch(query, this.$route.params)
 
-    let author = await $sanity.fetch(queryAuthor, params)
-    return author
+    this.author = result
+  },
+  data() {
+    return {
+      author: {},
+    }
   },
   computed: {
     newsArticles() {
