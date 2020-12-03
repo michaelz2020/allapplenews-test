@@ -94,8 +94,8 @@ export default {
   //Robot.txt
   robots: {
     UserAgent: '*',
-    Allow: '/',
-    Sitemap: 'https://allapplenews.com/sitemap.xml',
+    Disallow: '/',
+    // Sitemap: 'https://allapplenews.com/sitemap.xml',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
