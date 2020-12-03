@@ -1,0 +1,129 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .font-sectionheader {
+    @apply uppercase font-sans font-bold text-4xl leading-8 text-black;
+  }
+  .font-article-title {
+    @apply font-sans font-bold text-xl leading-snug text-black;
+  }
+  .font-headline {
+    @apply font-sans font-bold text-2xl leading-snug text-black transition ease-in-out duration-150;
+  }
+
+  .font-subheadline {
+    @apply font-serif text-lg leading-5 text-black;
+  }
+  .font-title {
+    @apply font-sans font-bold text-base leading-snug tracking-normal  text-black transition ease-in-out duration-150;
+  }
+
+  .font-subtitle {
+    @apply font-serif text-sm leading-4  text-textDark;
+  }
+  .font-caption {
+    @apply font-sans text-sm leading-3 text-gray-700;
+  }
+  .font-caption-bold {
+    @apply font-sans font-bold text-sm leading-3 truncate text-black;
+  }
+  .font-button {
+    @apply uppercase font-sans text-sm tracking-widest;
+  }
+
+  .text-color-navigation {
+    @apply text-black;
+  }
+
+  .text-color-navigation:hover {
+    @apply text-accent;
+  }
+
+  .text-color-footer {
+    @apply text-gray-400;
+  }
+
+  .text-color-footer:hover {
+    @apply text-white;
+  }
+
+  .button {
+    @apply flex items-center justify-center px-5 py-3 w-full text-lg leading-7 font-medium capitalize;
+  }
+
+  .button-black {
+    @apply text-white bg-black transition duration-150 ease-in-out;
+  }
+  .button-black:hover {
+    @apply bg-gray-800;
+  }
+  .button-accent {
+    @apply text-white bg-accent transition duration-150 ease-in-out;
+  }
+
+  .button-accent:hover {
+    @apply bg-accentLight;
+  }
+
+  .hover-stacked {
+    @apply shadow-stacked transition-shadow duration-150 ease-in-out;
+  }
+  .hover-stacked:hover {
+    @apply shadow-stackedHovered;
+  }
+
+  .page-container {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .article-container-title {
+    @apply max-w-4xl mx-auto py-2;
+  }
+
+  .article-container-body {
+    @apply max-w-lg mx-auto;
+  }
+
+  .navigation-container {
+    @apply max-w-6xl mx-auto px-2 py-3;
+  }
+
+  @screen md {
+    .font-article-title {
+      @apply text-4xl leading-tight;
+    }
+    .font-headline {
+      @apply text-3xl leading-tight;
+    }
+    .font-subheadline {
+      @apply text-xl leading-6;
+    }
+
+    .font-title {
+      @apply text-xl leading-7;
+    }
+    .font-subtitle {
+      @apply text-lg leading-5;
+    }
+    .font-caption-bold {
+      @apply text-base;
+    }
+
+    .button {
+      @apply w-auto;
+    }
+    .page-container {
+      @apply px-6;
+    }
+    .article-container-title {
+      @apply py-4;
+    }
+
+    .navigation-container {
+      @apply px-8 py-5;
+    }
+  }
+}

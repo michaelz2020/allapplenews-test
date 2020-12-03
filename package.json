@@ -1,0 +1,37 @@
+{
+  "name": "allapplenews-website-v3",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@ax2/lozad-module": "^0.2.0",
+    "@nuxtjs/robots": "^2.4.2",
+    "@nuxtjs/sanity": "^0.3.11",
+    "@tailwindcss/typography": "^0.3.1",
+    "algoliasearch": "^4.8.2",
+    "core-js": "^3.6.5",
+    "date-fns": "^2.16.1",
+    "node-sass": "^5.0.0",
+    "nuxt": "^2.14.6",
+    "nuxt-jsonld": "^1.5.0",
+    "sanity-blocks-vue-component": "^0.1.0",
+    "sass-loader": "^10.0.5",
+    "vue-instagram-embed": "^1.0.0",
+    "vue-instantsearch": "^3.4.2",
+    "vue-social-sharing": "^3.0.3",
+    "vue-tweet-embed": "^2.4.0",
+    "vue-youtube-embed": "^2.2.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/google-fonts": "^1.1.3",
+    "@nuxtjs/tailwindcss": "^3.1.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2"
+  }
+}
