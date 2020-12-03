@@ -77,12 +77,33 @@ import ScreenShot from '@/components/articles/components/ScreenShot.vue'
 import Twitter from '@/components/articles/components/Twitter.vue'
 import YoutubeMedia from '@/components/articles/components/YoutubeMedia.vue'
 
+import { groq } from '@nuxtjs/sanity'
+
+const query = groq` *[_type == "articleNews" && slug.current == $slug][0]{
+        ...,
+        "rawDate":_updatedAt,
+        author->,
+        productsCovered[0]->{name,oneLiner,description, releaseDate, slug,appLogo, mainProductImage, features},
+        appsCovered[0]->{name,oneLiner,category, description, slug, appLogo},
+        systemsCovered[0]->{name,oneLiner,releaseDate, slug, description, mainSystemImage},
+        body[]{
+          ...,
+          markDefs[]{
+            ...,
+            _type in ["product", "app", "article"] => {
+            "slug": @.reference-> slug
+            }
+          }
+        }
+      }`
+
 export default {
   components: {
     BlockContent,
   },
   data() {
     return {
+      article: {},
       getUnixTime,
       formatDistanceToNowStrict,
       parseISO,
@@ -152,29 +173,12 @@ export default {
       }
     },
   },
-  async asyncData({ $sanity, params }) {
-    const queryArticle = `{ "article": *[_type == "articleNews" && slug.current == "${params.slug}"][0]{
-        ...,
-        "rawDate":_updatedAt,
-        author->,
-        productsCovered[0]->{name,oneLiner,description, releaseDate, slug,appLogo, mainProductImage, features},
-        appsCovered[0]->{name,oneLiner,category, description, slug, appLogo},
-        systemsCovered[0]->{name,oneLiner,releaseDate, slug, description, mainSystemImage},
-        body[]{
-          ...,
-          markDefs[]{
-            ...,
-            _type in ["product", "app", "article"] => {
-            "slug": @.reference-> slug
-            }
-          }
-        }
-      }
-    }`
+  async fetch() {
+    const result = await this.$sanity.fetch(query, this.$route.params)
 
-    let article = await $sanity.fetch(queryArticle, params)
-    return article
+    this.article = result
   },
+
   head() {
     let article = this.article
 
